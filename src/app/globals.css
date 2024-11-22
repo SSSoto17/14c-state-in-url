@@ -13,9 +13,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(0, 1200px) minmax(1rem, 1fr);
+  grid-template-rows: auto 1fr;
+  row-gap: 4rem;
   min-height: 100svh;
 
-  > main {
+  > main,
+  > header {
     grid-column: 1 / 4;
     display: grid;
     grid-template-columns: subgrid;

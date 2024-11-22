@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useCallback } from "react";
 
 import whiteTee from "@/assets/whitetee.jpg";
+import blackTee from "@/assets/blacktee.webp";
+import blackWhiteTee from "@/assets/blackwhitetee.jpg";
+import redTee from "@/assets/redtee.jpg";
 
 const product = {
   title: "Classic T-shirt",
@@ -15,20 +15,8 @@ const product = {
 };
 
 export default function Home() {
-  const searchParams = useSearchParams();
-
-  const createQueryString = useCallback(
-    (name, value) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
-
   return (
-    <main className="place-content-center">
+    <main className="place-content-start">
       <section className="grid md:grid-cols-2 gap-x-12 gap-y-8">
         <Image src={whiteTee} alt={product.title} />
         <article className="grid auto-rows-min gap-y-8">
