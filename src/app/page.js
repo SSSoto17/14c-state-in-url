@@ -38,7 +38,7 @@ export default function Home() {
   );
 
   return (
-    <main className="place-content-center">
+    <main className="place-content-start">
       <section className="grid md:grid-cols-2 gap-x-12 gap-y-8">
         <Image src={teeColor} alt={product.title} width={800} height={800} />
         <article className="grid auto-rows-min gap-y-8">
