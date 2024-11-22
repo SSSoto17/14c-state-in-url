@@ -39,9 +39,10 @@ export default function Checkout({ searchParams }) {
       </Link>
       <section className="place-self-center border border-slate-200 rounded-2xl p-12 grid gap-y-8 min-w-96">
         <h2 className="text-4xl font-bold cursor-default">Your Cart</h2>
-        {size && color ? (
+        {size || color ? (
           <ProductCard
             title={product.title}
+            price={product.price}
             img={color ? currentTeeColor.img.src : whiteTee}
             size={size}
             color={color}

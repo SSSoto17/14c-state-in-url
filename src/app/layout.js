@@ -1,17 +1,16 @@
+import Header from "@/components/Header";
 import "./globals.css";
 
 export const metadata = {
-  title: "Buy a cool Tee",
-  description: "Find your new tee today!",
+  title: "Cool Tees Shop",
+  description: "Find your new cool tee today!",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header className="py-10 bg-[var(--background)] drop-shadow-lg">
-          <h1 className="text-4xl font-extrabold">Cool Tees Shop</h1>
-        </header>
+        <Header />
         {children}
       </body>
     </html>
