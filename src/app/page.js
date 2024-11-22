@@ -105,20 +105,19 @@ export function ProductOverview() {
             })}
           </ul>
         </section>
-        {!searchParams.get("size") && "nope"}
-        <Link
-          href="/"
-          className={`${
-            !searchParams.get("size") && "disabled"
-          } inline-block w-fit text-slate-50 bg-green-800 hover:bg-green-700 disabled:bg-slate-200 rounded-md py-2 px-4`}
-        >
-          Add to cart
-        </Link>
         <Link
           href={`/payment?${searchParams}`}
-          className="inline-block w-fit text-slate-50 bg-green-800 hover:bg-green-700 rounded-md py-2 px-4"
+          className={`${
+            !searchParams.get("size") || !searchParams.get("color")
+              ? "text-slate-400 bg-slate-50 pointer-events-none"
+              : "text-slate-50 bg-green-800 hover:bg-green-700"
+          } inline-block w-fit rounded-md py-2 px-4`}
         >
-          Add to cart
+          {!searchParams.get("size")
+            ? "Select a size"
+            : !searchParams.get("color")
+            ? "Select a color"
+            : "Add to cart"}
         </Link>
       </article>
     </section>
