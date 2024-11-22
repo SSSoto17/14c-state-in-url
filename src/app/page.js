@@ -51,7 +51,9 @@ export default function Home() {
                     }  py-1 px-2 rounded-md cursor-pointer hover:bg-slate-200 hover:text-[var(--foreground)] uppercase`}
                     key={size}
                   >
-                    <Link href={`?size=${size}`}>{size}</Link>
+                    <Link href={`?${createQueryString("size", size)}`}>
+                      {size}
+                    </Link>
                   </li>
                 );
               })}
@@ -70,15 +72,17 @@ export default function Home() {
                     } bg-slate-100 py-1 px-2 rounded-md cursor-pointer hover:bg-slate-200`}
                     key={color}
                   >
-                    <Link href={`?color=${color}`}>{color}</Link>
+                    <Link href={`?${createQueryString("color", color)}`}>
+                      {color}
+                    </Link>
                   </li>
                 );
               })}
             </ul>
           </section>
           <Link
-            href="/"
-            className="inline-block w-fit text-slate-50 bg-green-800 rounded-md py-2 px-4"
+            href={`/payment?${searchParams}`}
+            className="inline-block w-fit text-slate-50 bg-green-800 hover:bg-green-700 rounded-md py-2 px-4"
           >
             Add to cart
           </Link>
