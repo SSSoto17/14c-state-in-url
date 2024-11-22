@@ -38,54 +38,57 @@ export default function Home() {
               Price: <strong>${product.price}</strong>
             </p>
           </header>
-          <section className="flex">
-            <h3 className="font-semibold flex-[0_0_4rem]">Size</h3>
-            <ul className="flex flex-wrap gap-4">
-              {product.sizes.map((size) => {
-                return (
-                  <li
-                    className={`${
-                      searchParams.get("size") == size
-                        ? "bg-slate-700 text-slate-50 hover:bg-slate-900 hover:text-slate-50"
-                        : "bg-slate-100"
-                    }  py-1 px-2 rounded-md cursor-pointer hover:bg-slate-200 hover:text-[var(--foreground)] uppercase`}
-                    key={size}
-                  >
-                    <Link href={`?${createQueryString("size", size)}`}>
+          <form action="/payment" className="grid auto-rows-min gap-y-8">
+            <fieldset className="flex">
+              <legend className="font-semibold flex-[0_0_4rem]">Size</legend>
+              <div className="flex flex-wrap gap-4">
+                {product.sizes.map((size) => {
+                  return (
+                    <label
+                      htmlFor={size}
+                      className="relative bg-slate-100 hover:bg-slate-200 hover:text-[var(--foreground)] has-[:checked]:bg-slate-700 has-[:checked]:text-slate-50 has-[:checked]:hover:bg-slate-900 has-[:checked]:hover:text-slate-50  py-1 px-2 rounded-md uppercase"
+                      key={size}
+                    >
+                      <input
+                        id={size}
+                        type="radio"
+                        name="size"
+                        value={size}
+                        className="appearance-none absolute inset-0 opacity-0 cursor-pointer"
+                      />
                       {size}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-          <section className="flex">
-            <h3 className="font-semibold flex-[0_0_4rem]">Color</h3>
-            <ul className="flex flex-wrap gap-4">
-              {product.colors.map((color) => {
-                return (
-                  <li
-                    className={`${
-                      searchParams.get("color") == color
-                        ? "bg-slate-700 text-slate-50 hover:bg-slate-900 hover:text-slate-50"
-                        : "bg-slate-100"
-                    } bg-slate-100 py-1 px-2 rounded-md cursor-pointer hover:bg-slate-200`}
-                    key={color}
-                  >
-                    <Link href={`?${createQueryString("color", color)}`}>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+            <fieldset className="flex">
+              <legend className="font-semibold flex-[0_0_4rem]">Color</legend>
+              <div className="flex flex-wrap gap-4">
+                {product.colors.map((color) => {
+                  return (
+                    <label
+                      htmlFor={color}
+                      className="relative bg-slate-100 hover:bg-slate-200 hover:text-[var(--foreground)] has-[:checked]:bg-slate-700 has-[:checked]:text-slate-50 has-[:checked]:hover:bg-slate-900 has-[:checked]:hover:text-slate-50 py-1 px-2 rounded-md"
+                      key={color}
+                    >
+                      <input
+                        id={color}
+                        type="radio"
+                        name="color"
+                        value={color}
+                        className="appearance-none absolute inset-0 opacity-0 cursor-pointer"
+                      />
                       {color}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-          <Link
-            href={`/payment?${searchParams}`}
-            className="inline-block w-fit text-slate-50 bg-green-800 hover:bg-green-700 rounded-md py-2 px-4"
-          >
-            Add to cart
-          </Link>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+            <button className="inline-block w-fit text-slate-50 bg-green-800 hover:bg-green-700 rounded-md py-2 px-4">
+              Add to cart
+            </button>
+          </form>
         </article>
       </section>
     </main>
