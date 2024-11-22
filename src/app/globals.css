@@ -7,15 +7,21 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 1200px) minmax(1rem, 1fr);
+  min-height: 100svh;
+
+  > main {
+    grid-column: 1 / 4;
+    display: grid;
+    grid-template-columns: subgrid;
+
+    > * {
+      grid-column: 2;
+    }
+  }
 }
