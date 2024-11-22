@@ -4,18 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback } from "react";
+import { useState } from "react";
 
 import whiteTee from "@/assets/whitetee.jpg";
+import blackTee from "@/assets/blacktee.webp";
+import blackWhiteTee from "@/assets/blackwhitetee.jpg";
+import redTee from "@/assets/redtee.jpg";
 
 const product = {
   title: "Classic T-shirt",
   price: 9.99,
   sizes: ["xxs", "xs", "m", "l", "xl", "xxl", "xxxl"],
-  colors: ["White", "Black&White", "Red", "Black"],
+  colors: [
+    { name: "White", img: whiteTee },
+    { name: "Black", img: blackTee },
+    { name: "Black&White", img: blackWhiteTee },
+    { name: "Red", img: redTee },
+  ],
 };
 
 export default function Home() {
   const searchParams = useSearchParams();
+  const [teeColor, setTeeColor] = useState(whiteTee);
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -30,7 +40,7 @@ export default function Home() {
   return (
     <main className="place-content-center">
       <section className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-        <Image src={whiteTee} alt={product.title} />
+        <Image src={teeColor} alt={product.title} width={800} height={800} />
         <article className="grid auto-rows-min gap-y-8">
           <header className="cursor-default">
             <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
@@ -66,14 +76,19 @@ export default function Home() {
                 return (
                   <li
                     className={`${
-                      searchParams.get("color") == color
+                      searchParams.get("color") == color.name
                         ? "bg-slate-700 text-slate-50 hover:bg-slate-900 hover:text-slate-50"
                         : "bg-slate-100"
                     } bg-slate-100 py-1 px-2 rounded-md cursor-pointer hover:bg-slate-200`}
-                    key={color}
+                    key={color.name}
                   >
-                    <Link href={`?${createQueryString("color", color)}`}>
-                      {color}
+                    <Link
+                      href={`?${createQueryString("color", color.name)}`}
+                      onClick={() => {
+                        setTeeColor(color.img);
+                      }}
+                    >
+                      {color.name}
                     </Link>
                   </li>
                 );

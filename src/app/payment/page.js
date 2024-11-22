@@ -15,10 +15,18 @@ export default function Checkout({ searchParams }) {
   return (
     <main>
       <section>
-        <article>
+        <h2>Your Cart</h2>
+        <article className="grid grid-cols-2 gap-6 max-h-40 max-w-96">
           <Image src={whiteTee} alt={product.title} />
-          <p>Size: {size}</p>
-          <p>Color: {color}</p>
+          <div>
+            <h3 className="text-xl font-semibold">{product.title}</h3>
+            <p>
+              Size: <strong className="uppercase">{size}</strong>
+            </p>
+            <p>
+              Color: <strong>{color}</strong>
+            </p>
+          </div>
         </article>
       </section>
     </main>
